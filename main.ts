@@ -1,5 +1,5 @@
-//% weight = 10 icon = "\uf136"
-//% color = #ff8800 block = "micro:bit car"
+//% weight = 10 icon = "\uf123"
+//% color = #ff8800 block = "ruirui test"
 
 namespace ruirui {
 
