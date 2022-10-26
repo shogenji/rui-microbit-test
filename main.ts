@@ -21,11 +21,7 @@ namespace ruirui {
     }
 
     //% blockId = run_motor
-    //% block = "motor|%motors| move|%Dir| at speed|%speed"
-    //% motors.fieldEditor = "gridpicker"
-    //% motors.fieldOptions.columns = 2
-    //% direction.fieldEditor = "gridpicker"
-    //% direction.fieldOptions.columns = 2
+    //% block = "motor %motors move %direction at speed %speed"
     //% speed.min = 0 speed.max = 1023
     export function runMotor(motors: Motors, direction: Dir, speed: number): void {
         // Left motor
