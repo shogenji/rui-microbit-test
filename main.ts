@@ -28,7 +28,7 @@ namespace ruirui {
 
     //% weight = 80
     //% blockId = run_motor
-    //% block="motor|%motors|move|%Dir|at speed|%speed"
+    //% block="motor|%motors|move|%direction|at speed|%speed"
     //% speed.min = 0 speed.max = 1023
     //% motors.fieldEditor = "gridpicker"
     //% motors.fieldOptions.columns = 2
