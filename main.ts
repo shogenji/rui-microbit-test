@@ -1,6 +1,5 @@
-//% weight = 70 icon = "\uf136"
+//% icon = "\uf136"
 //% color = #ff8800 block = "micro:bit car"
-//% groups = ['micro:bit(v2)']
 namespace ruirui {
 
     export enum Motors {
@@ -20,7 +19,6 @@ namespace ruirui {
         Forward = 1
     }
 
-    //% weight = 80
     //% blockId = run_motor
     //% block = "motor|%motors| move|%direction |at speed|%speed"
     //% speed.min = 0 speed.max = 1023
@@ -48,7 +46,6 @@ namespace ruirui {
         }
     }
 
-    //% weight = 90
     //% blockId = stop_motor
     //% block = "motor |%motors stop"
     //% motors.fieldEditor = "gridpicker"
@@ -69,7 +66,6 @@ namespace ruirui {
         }
     }
 
-    //% weight = 200
     //% blockId=PLEN:bit_servo
     //% block="servo motor %num|number %degrees|degrees"
     //% num.min=0 num.max=11
