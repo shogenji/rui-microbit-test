@@ -39,6 +39,7 @@ namespace ruirui {
             pins.digitalWritePin(DigitalPin.P16, speed)
         }
     }
+    
     //% blockId="stop_motor"
     //% block="motor | %motors stop"
     export function stopMotor(motors: Motors): void {
