@@ -31,7 +31,34 @@ namespace ruirui {
         pins.digitalWritePin(DigitalPin.P0, 0)
     }
 
-    //% blockId = "stopMotor"
+    //% blockId = run_motor
+    //% block="motor |%motors |move|%Dir|at speed|%speed"
+    //% speed.min = 0 speed.max = 1023
+    //% motors.fieldEditor = "gridpicker"
+    //% motors.fieldOptions.columns = 2
+    //% direction.fieldEditor = "gridpicker"
+    //% direction.fieldOptions.columns = 2
+    export function runMotor(motors: Motors, direction: Dir, speed: number): void {
+        // Left motor
+        if (motors == 0) {
+            pins.digitalWritePin(DigitalPin.P13, direction)
+            pins.digitalWritePin(DigitalPin.P14, speed)
+        }
+        // Right motor
+        if (motors == 1) {
+            pins.digitalWritePin(DigitalPin.P15, direction)
+            pins.digitalWritePin(DigitalPin.P16, speed)
+        }
+        // Both motors
+        if (motors == 2) {
+            pins.digitalWritePin(DigitalPin.P13, direction)
+            pins.digitalWritePin(DigitalPin.P14, speed)
+            pins.digitalWritePin(DigitalPin.P15, direction)
+            pins.digitalWritePin(DigitalPin.P16, speed)
+        }
+    }
+
+    //% blockId = stop_motor
     //% block="motor |%motors stop"
     //% motors.fieldEditor = "gridpicker"
     //% motors.fieldOptions.columns = 2
