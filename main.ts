@@ -9,7 +9,7 @@ namespace ruirui {
         Both = 2
     }
 
-    //% blockId = stop_motor
+    //% blockId=stop_motor
     //% block = "motor | %motors stop"
     export function stopMotor(motors: Motors): void {
         if (motors == 0) {
