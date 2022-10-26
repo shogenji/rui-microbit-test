@@ -11,9 +11,9 @@ namespace ruirui {
     }
 
     export enum Dir {
-        //% blockId=backward block="Backward"
+        //% blockId=direction_backward block="Backward"
         Backward = 0,
-        //% blockId=forward block="Forward"
+        //% blockId=direction_forward block="Forward"
         Forward = 1
     }
 
