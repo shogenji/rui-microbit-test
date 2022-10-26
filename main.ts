@@ -1,5 +1,4 @@
-//% weight = 10 icon = "\uf123"
-//% color = #ff8800 block = "ruirui test"
+//% block = "Ruirui"
 namespace ruirui {
 
     export enum Motors {
