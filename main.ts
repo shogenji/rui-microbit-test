@@ -1,5 +1,3 @@
-//% weight = 70 icon = "\uf1b9"
-//% color = #ff8800 block = "micro:bit car"
 
 let speedR = 30
 let speedL = 30
@@ -7,6 +5,8 @@ let speedL = 30
 // Left motor:  P13(Direction), P14(Speed: 0-1023)
 // Right motor: P15(Direction), P16(Speed: 0-1023)
 
+//% weight = 70 icon = "\uf1b9"
+//% color = #ff8800 block = "micro:bit car"
 namespace ruirui {
 
     export enum Motors {
@@ -28,7 +28,7 @@ namespace ruirui {
 
     //% weight = 80
     //% blockId = run_motor
-    //% block="motor|%motors|move|%direction|at speed|%speed"
+    //% block = "motor|%motors| move|%direction |at speed|%speed"
     //% speed.min = 0 speed.max = 1023
     //% motors.fieldEditor = "gridpicker"
     //% motors.fieldOptions.columns = 2
@@ -56,7 +56,7 @@ namespace ruirui {
 
     //% weight = 90
     //% blockId = stop_motor
-    //% block="motor |%motors stop"
+    //% block = "motor |%motors stop"
     //% motors.fieldEditor = "gridpicker"
     //% motors.fieldOptions.columns = 2
     export function stopMotor(motors: Motors): void {
