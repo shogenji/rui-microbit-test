@@ -45,8 +45,6 @@ namespace ruirui {
 
     //% blockId = stop_motor
     //% block = "motor |%motors stop"
-    //% motors.fieldEditor = "gridpicker"
-    //% motors.fieldOptions.columns = 2
     export function stopMotor(motors: Motors): void {
         // Left motor
         if (motors == 0) {
