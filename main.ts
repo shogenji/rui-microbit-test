@@ -1,5 +1,5 @@
-//% weight = 70 icon = "\uf075"
-//% color = #ff8800 block = "blink LED"
+//% weight = 70 icon = "\uf1b9"
+//% color = #ff8800 block = "micro:bit car"
 
 let speedR = 30
 let speedL = 30
@@ -32,7 +32,7 @@ namespace ruirui {
     }
 
     //% blockId = run_motor
-    //% block="motor |%motors |move|%Dir|at speed|%speed"
+    //% block="motor|%motors|move|%Dir|at speed|%speed"
     //% speed.min = 0 speed.max = 1023
     //% motors.fieldEditor = "gridpicker"
     //% motors.fieldOptions.columns = 2
