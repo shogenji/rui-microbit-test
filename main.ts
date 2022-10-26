@@ -22,7 +22,6 @@ namespace ruirui {
 
     //% blockId = run_motor
     //% block = "motor %motors move %direction at speed %speed"
-    //% speed.min = 0 speed.max = 1023
     export function runMotor(motors: Motors, direction: Dir, speed: number): void {
         // Left motor
         if (motors == 0) {
@@ -61,18 +60,6 @@ namespace ruirui {
         }
     }
 
-    //% blockId=PLEN:bit_servo
-    //% block="servo motor %num|number %degrees|degrees"
-    //% num.min=0 num.max=11
-    //% degrees.min=0 degrees.max=180
-    export function servoWrite(num: number, degrees: number) {
-        let highByte = false;
-        let pwmVal = degrees * 100 * 226 / 10000;
-        pwmVal = Math.round(pwmVal) + 0x66;
-        if (pwmVal > 0xFF) {
-            highByte = true;
-        }
-    }
 }
 
 /*
