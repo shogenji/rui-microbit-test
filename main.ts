@@ -1,6 +1,5 @@
 //% weight = 10 icon = "\uf123"
 //% color = #ff8800 block = "ruirui test"
-
 namespace ruirui {
 
     export enum Motors {
@@ -39,13 +38,3 @@ namespace ruirui {
     }
 
 }
-
-/*
-
-https://github.com/shogenji/rui-microbit-test
-
-Left motor:  P13(Direction), P14(Speed: 0-1023)
-Right motor: P15(Direction), P16(Speed: 0-1023)
-
-*/
-
