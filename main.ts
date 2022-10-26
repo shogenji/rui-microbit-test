@@ -1,12 +1,15 @@
-/*  */
-let speedR = 30
-let speedL = 30
+/* 
 
-// Left motor:  P13(Direction), P14(Speed: 0-1023)
-// Right motor: P15(Direction), P16(Speed: 0-1023)
+https://github.com/shogenji/rui-microbit-test
+
+Left motor:  P13(Direction), P14(Speed: 0-1023)
+Right motor: P15(Direction), P16(Speed: 0-1023)
+
+*/
 
 //% weight = 70 icon = "\uf136"
 //% color = #ff8800 block = "micro:bit car"
+//% groups = ['micro:bit(v2)']
 namespace ruirui {
 
     export enum Motors {
