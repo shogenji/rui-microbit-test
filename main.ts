@@ -2,13 +2,21 @@
 namespace ruirui {
 
     export enum Motors {
-        //% blockId="left_motor" block="left"
+        //% blockId=left_motor block="left"
         Left = 0,
-        //% blockId="right_motor" block="right"
+        //% blockId=right_motor block="right"
         Right = 1,
-        //% blockId="both_motors" block="both"
+        //% blockId=both_motors block="both"
         Both = 2
     }
+
+    export enum Dir {
+        //% blockId=backward block="Backward"
+        Backward = 0,
+        //% blockId=forward block="Forward"
+        Forward = 1
+    }
+
 
     //% blockId="stop_motor"
     //% block="motor | %motors stop"
