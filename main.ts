@@ -17,7 +17,27 @@ namespace ruirui {
         Forward = 1
     }
 
-
+    //% blockId=run_motor
+    //% block="motor %motors move %direction at speed %speed"
+    export function runMotor(motors: Motors, direction: Dir, speed: number): void {
+        // Left motor
+        if (motors == 0) {
+            pins.digitalWritePin(DigitalPin.P13, direction)
+            pins.digitalWritePin(DigitalPin.P14, speed)
+        }
+        // Right motor
+        if (motors == 1) {
+            pins.digitalWritePin(DigitalPin.P15, direction)
+            pins.digitalWritePin(DigitalPin.P16, speed)
+        }
+        // Both motors
+        if (motors == 2) {
+            pins.digitalWritePin(DigitalPin.P13, direction)
+            pins.digitalWritePin(DigitalPin.P14, speed)
+            pins.digitalWritePin(DigitalPin.P15, direction)
+            pins.digitalWritePin(DigitalPin.P16, speed)
+        }
+    }
     //% blockId="stop_motor"
     //% block="motor | %motors stop"
     export function stopMotor(motors: Motors): void {
