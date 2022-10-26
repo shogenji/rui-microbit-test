@@ -1,7 +1,8 @@
+//% weight=10 color=#ff8800 icon="\uf1b9" block="Car"
 namespace ruirui {
 
     export enum Motors {
-        //% blockId ="left_motor" block="left"
+        //% blockId="left_motor" block="left"
         Left = 0,
         //% blockId="right_motor" block="right"
         Right = 1,
