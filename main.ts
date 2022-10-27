@@ -14,9 +14,9 @@ namespace ruirui {
 
     export enum Dir {
         //% blockId=direction_forward block="Forward"
-        Forward = 0,
+        Forward = 1,
         //% blockId=direction_backward block="Backward"
-        Backward = 1
+        Backward = 0
     }
 
     //% subcategory=Motors
@@ -49,7 +49,7 @@ namespace ruirui {
     //% blockId="stop_motor"
     //% block="motor | %motors stop"
     export function stopMotor(motors: Motors): void {
-        switch (motor) {
+        switch (motors) {
             case Motors.Left:
                 pins.digitalWritePin(DigitalPin.P14, 0)
                 break
@@ -72,11 +72,9 @@ namespace ruirui {
     //% group="Motor Control"
     //% blockId="stop"
     //% block="stop"
-    export function stopMotor(): void {
-        if (motors == 2) {
-            pins.digitalWritePin(DigitalPin.P14, 0)
-            pins.digitalWritePin(DigitalPin.P16, 0)
-        }
+    export function stop(): void {
+        pins.digitalWritePin(DigitalPin.P14, 0)
+        pins.digitalWritePin(DigitalPin.P16, 0)
     }
 
     //% subcategory=Motors
@@ -113,17 +111,17 @@ namespace ruirui {
     //% subcategory=Motors
     //% group="Motor Control"
     //% blockId=motor_on
-    //% block="turn %motor|motor on direction %direction|at speed %speed"
+    //% block="turn %motors|motor on direction %direction|at speed %speed"
     //% weight=75 blockGap=8
     //% speed.min=0 speed.max=100
-    export function motorOn(motor: Motors, direction: Dir, speed: number): void {
+    function motorOn(motors: Motors, direction: Dir, speed: number): void {
         /*convert 0-100 to 0-1023 by a simple multiple by (speedMax / 100) */
         let outputVal = Math.round(speed * speedMax / 100)
         if (outputVal > speedMax) {
             outputVal = speedMax
         }
 
-        switch (motor) {
+        switch (motors) {
             case Motors.Left:
                 pins.digitalWritePin(DigitalPin.P13, direction)
                 pins.digitalWritePin(DigitalPin.P14, outputVal)
