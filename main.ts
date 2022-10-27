@@ -13,10 +13,10 @@ namespace ruirui {
     }
 
     export enum Dir {
-        //% blockId=direction_backward block="Backward"
-        Backward = 0,
         //% blockId=direction_forward block="Forward"
-        Forward = 1
+        Forward = 0,
+        //% blockId=direction_backward block="Backward"
+        Backward = 1
     }
 
     //% subcategory=Motors
@@ -43,18 +43,36 @@ namespace ruirui {
             pins.digitalWritePin(DigitalPin.P16, speed)
         }
     }
-    
+
     //% subcategory=Motors
     //% group="Motor Control"
     //% blockId="stop_motor"
     //% block="motor | %motors stop"
     export function stopMotor(motors: Motors): void {
-        if (motors == 0) {
-            pins.digitalWritePin(DigitalPin.P14, 0)
+        switch (motor) {
+            case Motors.Left:
+                pins.digitalWritePin(DigitalPin.P14, 0)
+                break
+
+            case Motors.Right:
+                pins.digitalWritePin(DigitalPin.P16, 0)
+                break
+
+            case Motors.Both:
+                pins.digitalWritePin(DigitalPin.P14, 0)
+                pins.digitalWritePin(DigitalPin.P16, 0)
+                break
+
+            default:
+            //Stop - something has gone wrong
         }
-        if (motors == 1) {
-            pins.digitalWritePin(DigitalPin.P16, 0)
-        }
+    }
+
+    //% subcategory=Motors
+    //% group="Motor Control"
+    //% blockId="stop"
+    //% block="stop"
+    export function stopMotor(): void {
         if (motors == 2) {
             pins.digitalWritePin(DigitalPin.P14, 0)
             pins.digitalWritePin(DigitalPin.P16, 0)
@@ -114,12 +132,15 @@ namespace ruirui {
             case Motors.Right:
                 pins.digitalWritePin(DigitalPin.P15, direction)
                 pins.digitalWritePin(DigitalPin.P16, outputVal)
+                break
 
             case Motors.Both:
                 pins.digitalWritePin(DigitalPin.P13, direction)
                 pins.digitalWritePin(DigitalPin.P14, outputVal)
                 pins.digitalWritePin(DigitalPin.P15, direction)
                 pins.digitalWritePin(DigitalPin.P16, outputVal)
+                break
+
             default:
             //Stop - something has gone wrong
         }
