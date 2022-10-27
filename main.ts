@@ -4,19 +4,19 @@ namespace ruirui {
     let speedMax = 1023
 
     export enum Motors {
+        //% blockId=both_motors block="both"
+        Both = 2,
         //% blockId=left_motor block="left"
         Left = 0,
         //% blockId=right_motor block="right"
-        Right = 1,
-        //% blockId=both_motors block="both"
-        Both = 2
+        Right = 1
     }
 
     export enum Dir {
         //% blockId=direction_forward block="Forward"
-        Forward = 1,
+        Forward = 0,
         //% blockId=direction_backward block="Backward"
-        Backward = 0
+        Backward = 1
     }
 
     //% subcategory=Motors
@@ -94,6 +94,7 @@ namespace ruirui {
                 motorOn(Motors.Left, Dir.Backward, speed)
                 motorOn(Motors.Right, Dir.Backward, speed)
                 break
+                
             default: //just in case. Should never get here
                 motorOff(Motors.Left)
                 motorOff(Motors.Right)
