@@ -1,4 +1,4 @@
-//% weight=10 color=#ff8800 icon="\uf1b9" block="Car"
+//% weight=10 color=#ff8800 icon="\uf5e4" block="Car"
 namespace ruirui {
 
     let speedMax = 1023
