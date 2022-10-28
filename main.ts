@@ -6,20 +6,28 @@ namespace ruirui {
     let speedMax = 1023
 
     export enum Motors {
-        //% blockId=both_motors block="both"
-        Both = 2,
-        //% blockId=left_motor block="left"
+        //% blockId=left_motor
+        //% block="left"
+        //% block.loc.ja="左側"
         Left = 0,
-        //% blockId=right_motor block="right"
-        Right = 1
+        //% blockId=right_motor
+        //% block="right"
+        //% block.loc.ja="右側"
+        Right = 1,
+        //% blockId=both_motors
+        //% block="both"
+        //% block.loc.ja="両方"
+        Both = 2
     }
 
     export enum Dir {
         //% blockId=direction_forward
         //% block="Forward"
+        //% block.loc.ja="前進"
         Forward = 0,
         //% blockId=direction_backward
         //% block="Backward"
+        //% block.loc.ja="後退"
         Backward = 1
     }
 
@@ -72,6 +80,7 @@ namespace ruirui {
     //% weight=60 blockGap=8
     //% block="stop | for %duration x 0.1 seconds"
     //% block.loc.ja="止まる | %duration x 0.1 秒間"
+    //% duration.min=0 duration.max=1000
     export function stopFor(duration: number): void {
         motorOff(Motors.Both)
         basic.pause(duration * 100)
@@ -81,6 +90,7 @@ namespace ruirui {
     //% weight=100 blockGap=8
     //% block="move forward | for %duration x 0.1 seconds"
     //% block.loc.ja="すすむ | %duration x 0.1 秒間"
+    //% duration.min=0 duration.max=1000
     export function moveForwardFor(duration: number): void {
         motorOn(Motors.Both, Dir.Forward, 50)
         basic.pause(duration * 100)
@@ -91,6 +101,7 @@ namespace ruirui {
     //% weight=90 blockGap=8
     //% block="move backward | for %duration x 0.1 seconds"
     //% block.loc.ja="さがる | %duration x 0.1 秒間"
+    //% duration.min=0 duration.max=1000
     export function moveBackwardFor(duration: number): void {
         motorOn(Motors.Both, Dir.Backward, 50)
         basic.pause(duration * 100)
@@ -101,6 +112,7 @@ namespace ruirui {
     //% weight=70 blockGap=8
     //% block="rotate counter-clockwise | for %duration x 0.1 seconds"
     //% block.loc.ja="左回転 | %duration x 0.1 秒間"
+    //% duration.min=0 duration.max=1000
     export function rotateCcwFor(duration: number): void {
         let speed = 50
 
@@ -114,6 +126,7 @@ namespace ruirui {
     //% weight=80 blockGap=8
     //% block="rotate clockwise | for %duration x 0.1 seconds"
     //% block.loc.ja="右回転 | %duration x 0.1 秒間"
+    //% duration.min=0 duration.max=1000
     export function turnCwFor(duration: number): void {
         let speed = 50
 
