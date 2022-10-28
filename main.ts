@@ -19,8 +19,6 @@ namespace ruirui {
         Backward = 1
     }
 
-    //% subcategory=Motors
-    //% group="Motor Control"
     //% blockId=run_motor
     //% block="run %motors motor %direction at speed %speed"
     //% speed.min=0 speed.max=1023
@@ -44,8 +42,6 @@ namespace ruirui {
         }
     }
 
-    //% subcategory=Motors
-    //% group="Motor Control"
     //% blockId="stop_motor"
     //% block="motor | %motors stop"
     export function stopMotor(motors: Motors): void {
@@ -79,11 +75,10 @@ namespace ruirui {
         }
     }
 
-    //% blockId=move_forward
+    //% blockId=move_forward_x100ms
     //% weight=100 blockGap=8
-    //% block="move forward for |number %duration x 0.1 seconds"
-    //% block.loc.ja="|number %duration x 0.1 秒間進む"
-    //% speed.min=0 speed.max=100
+    //% block="move forward for %duration x 0.1 seconds"
+    //% block.loc.ja="%duration x 0.1 秒間 進む"
     export function moveForwardFor(duration: number): void {
         motorOn(Motors.Both, Dir.Forward, 50)
         basic.pause(duration * 100)
