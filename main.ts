@@ -78,9 +78,45 @@ namespace ruirui {
     //% blockId=move_forward_x100ms
     //% weight=100 blockGap=8
     //% block="move forward for %duration x 0.1 seconds"
-    //% block.loc.ja="%duration x 0.1 秒間 進む"
+    //% block.loc.ja="進む %duration x 0.1 秒間"
     export function moveForwardFor(duration: number): void {
         motorOn(Motors.Both, Dir.Forward, 50)
+        basic.pause(duration * 100)
+        stop()
+    }
+
+    //% blockId=move_backward_x100ms
+    //% weight=100 blockGap=8
+    //% block="move backward for %duration x 0.1 seconds"
+    //% block.loc.ja="さがる %duration x 0.1 秒間"
+    export function moveBackwardFor(duration: number): void {
+        motorOn(Motors.Both, Dir.Backward, 50)
+        basic.pause(duration * 100)
+        stop()
+    }
+
+    //% blockId=rotate_ccw_x100ms
+    //% weight=100 blockGap=8
+    //% block="rotate counter-clockwise for %duration x 0.1 seconds"
+    //% block.loc.ja="左回転 %duration x 0.1 秒間"
+    export function rotateCcwFor(duration: number): void {
+        let speed = 50
+
+        motorOn(Motors.Left, Dir.Backward, speed)
+        motorOn(Motors.Right, Dir.Forward, speed)
+        basic.pause(duration * 100)
+        stop()
+    }
+
+    //% blockId=rotate_cw_x100ms
+    //% weight=100 blockGap=8
+    //% block="rotate clockwise for %duration x 0.1 seconds"
+    //% block.loc.ja="右回転 %duration x 0.1 秒間"
+    export function turnCwFor(duration: number): void {
+        let speed = 50
+
+        motorOn(Motors.Left, Dir.Forward, speed)
+        motorOn(Motors.Right, Dir.Backward, speed)
         basic.pause(duration * 100)
         stop()
     }
@@ -101,20 +137,20 @@ namespace ruirui {
         motorOn(Motors.Both, Dir.Backward, speed)
     }
 
-    //% blockId=turn_left
+    //% blockId=rotate_ccw_at
     //% weight=100 blockGap=8
-    //% block="turn left at speed %speed"
+    //% block="rotate counter-clockwise at speed %speed"
     //% speed.min=0 speed.max=100
-    export function turnLeft(speed: number): void {
+    export function rotateCcwAt(speed: number): void {
         motorOn(Motors.Left, Dir.Backward, speed)
         motorOn(Motors.Right, Dir.Forward, speed)
     }
 
-    //% blockId=turn_right
+    //% blockId=rotate_cw_at
     //% weight=100 blockGap=8
-    //% block="turn right at speed %speed"
+    //% block="rotate counter-clockwise at speed %speed"
     //% speed.min=0 speed.max=100
-    export function turnRight(speed: number): void {
+    export function rotateCwAt(speed: number): void {
         motorOn(Motors.Left, Dir.Forward, speed)
         motorOn(Motors.Right, Dir.Backward, speed)
     }
