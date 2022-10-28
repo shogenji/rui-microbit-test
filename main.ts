@@ -69,7 +69,7 @@ namespace ruirui {
     }
 
     //% blockId=stop_for_x100ms
-    //% weight=10 blockGap=8
+    //% weight=60 blockGap=8
     //% block="stop | for %duration x 0.1 seconds"
     //% block.loc.ja="止まる | %duration x 0.1 秒間"
     export function stopFor(duration: number): void {
@@ -78,7 +78,7 @@ namespace ruirui {
     }
 
     //% blockId=move_forward_x100ms
-    //% weight=60 blockGap=8
+    //% weight=100 blockGap=8
     //% block="move forward | for %duration x 0.1 seconds"
     //% block.loc.ja="すすむ | %duration x 0.1 秒間"
     export function moveForwardFor(duration: number): void {
