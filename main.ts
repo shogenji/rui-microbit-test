@@ -142,8 +142,8 @@ namespace ruirui {
 
     //% blockId=set_speed_ratio
     //% weight=50 blockGap=8
-    //% block="set speed ratio to %speed %%"
-    //% block.loc.ja="スピードを| %speed %%|に設定する"
+    //% block="set speed ratio to %speed"
+    //% block.loc.ja="スピードを| %speed |に設定する"
     //% speed.min=0 speed.max=100
     export function setSpeedRatio(speed: number): void {
         if (speed < 0) {
@@ -174,7 +174,7 @@ namespace ruirui {
 
     //% blockId=move_forward
     //% weight=10 blockGap=8
-    //% block="move forward at speed %speed %"
+    //% block="move forward at speed %speed"
     //% speed.min=0 speed.max=100
     function moveForward(speed: number): void {
         motorOn(Motors.Both, Dir.Forward, speed)
@@ -182,7 +182,7 @@ namespace ruirui {
 
     //% blockId=move_backward
     //% weight=10 blockGap=8
-    //% block="move backward at speed %speed %"
+    //% block="move backward at speed %speed"
     //% speed.min=0 speed.max=100
     function moveBackward(speed: number): void {
         motorOn(Motors.Both, Dir.Backward, speed)
@@ -190,7 +190,7 @@ namespace ruirui {
 
     //% blockId=rotate_ccw_at
     //% weight=10 blockGap=8
-    //% block="rotate counter-clockwise at speed %speed %"
+    //% block="rotate counter-clockwise at speed %speed"
     //% speed.min=0 speed.max=100
     export function rotateCcwAt(speed: number): void {
         motorOn(Motors.Left, Dir.Backward, speed)
@@ -199,7 +199,7 @@ namespace ruirui {
 
     //% blockId=rotate_cw_at
     //% weight=10 blockGap=8
-    //% block="rotate counter-clockwise at speed %speed %"
+    //% block="rotate counter-clockwise at speed %speed"
     //% speed.min=0 speed.max=100
     export function rotateCwAt(speed: number): void {
         motorOn(Motors.Left, Dir.Forward, speed)
@@ -214,7 +214,7 @@ namespace ruirui {
      * @param speed how fast to spin the motor
      */
     //% blockId=motor_on
-    //% block="turn %motors|motor on direction %direction|at speed %speed %"
+    //% block="turn %motors|motor on direction %direction|at speed %speed"
     //% speed.min=0 speed.max=100
     function motorOn(motors: Motors, direction: Dir, speed: number): void {
         /*convert 0-100 to 0-1023 by a simple multiple by (speedMax / 100) */
