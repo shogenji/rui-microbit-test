@@ -3,8 +3,15 @@
 //% block.loc.ja="走らせようキット"
 namespace ruirui {
 
-    let speedMax = 1023
-    let speedRatio = 50
+    //% blockId=speed_max
+    //% block="Max Speed"
+    //% block.loc.ja="最高スピード"
+    export let speedMax = 1023
+
+    //% blockId=speed_ratio
+    //% block="Speed"
+    //% block.loc.ja="スピード"
+    export let speedRatio = 50
 
     export enum Motors {
         //% blockId=left_motor
@@ -135,16 +142,16 @@ namespace ruirui {
 
     //% blockId=set_speed_ratio
     //% weight=50 blockGap=8
-    //% block="set speed ratio to %ratio %"
-    //% block.loc.ja="スピードを| %ratio %|に設定する"
-    //% ratio.min=0 ratio.max=100
-    export function setSpeedRatio(ratio: number): void {
-        if (ratio < 0) {
-            ratio = 0
-        } else if (ratio > 100) {
-            ratio = 100
+    //% block="set speed ratio to %speed %%"
+    //% block.loc.ja="スピードを| %speed %%|に設定する"
+    //% speed.min=0 speed.max=100
+    export function setSpeedRatio(speed: number): void {
+        if (speed < 0) {
+            speed = 0
+        } else if (speed > 100) {
+            speed = 100
         }
-        speedRatio = (speedMax * ratio) / 100
+        speedRatio = (speedMax * speed) / 100
     }
 
     //% blockId=set_max_speed
