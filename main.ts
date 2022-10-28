@@ -49,36 +49,16 @@ namespace ruirui {
     //% blockId="stop_motor"
     //% block="motor | %motors stop"
     export function stopMotor(motors: Motors): void {
-        switch (motors) {
-            case Motors.Left:
-                pins.digitalWritePin(DigitalPin.P14, 0)
-                break
-
-            case Motors.Right:
-                pins.digitalWritePin(DigitalPin.P16, 0)
-                break
-
-            case Motors.Both:
-                pins.digitalWritePin(DigitalPin.P14, 0)
-                pins.digitalWritePin(DigitalPin.P16, 0)
-                break
-
-            default:
-            //Stop - something has gone wrong
-        }
+        motorOff(motors)
     }
 
-    //% subcategory=Motors
-    //% group="Motor Control"
     //% blockId="stop"
     //% block="stop"
+    //% block.loc.ja="止まる"
     export function stop(): void {
-        pins.digitalWritePin(DigitalPin.P14, 0)
-        pins.digitalWritePin(DigitalPin.P16, 0)
+        motorOff(Motors.Both)
     }
 
-    //% subcategory=Motors
-    //% group="Motor Control"
     //% blockId=move_motor
     //% weight=100 blockGap=8
     //% block="move %direction|at speed %speed"
@@ -86,31 +66,71 @@ namespace ruirui {
     export function move(direction: Dir, speed: number): void {
         switch (direction) {
             case Dir.Forward:
-                motorOn(Motors.Left, Dir.Forward, speed)
-                motorOn(Motors.Right, Dir.Forward, speed)
+                motorOn(Motors.Both, Dir.Forward, speed)
                 break
 
             case Dir.Backward:
-                motorOn(Motors.Left, Dir.Backward, speed)
-                motorOn(Motors.Right, Dir.Backward, speed)
+                motorOn(Motors.Both, Dir.Backward, speed)
                 break
-                
+
             default: //just in case. Should never get here
-                motorOff(Motors.Left)
-                motorOff(Motors.Right)
+                motorOff(Motors.Both)
                 break
         }
     }
 
-    /******************************************************************************/
-    /* Sets the requested motor running in chosen direction at a set speed.       */
-    /* If setup is not complete, calls the initialisation routine.                */
-    /* @param motor which motor to turn on                                        */
-    /* @param dir which direction to go                                           */
-    /* @param speed how fast to spin the motor                                    */
-    /******************************************************************************/
-    //% subcategory=Motors
-    //% group="Motor Control"
+    //% blockId=move_forward
+    //% weight=100 blockGap=8
+    //% block="move forward for |number %duration x 0.1 seconds"
+    //% block.loc.ja="|number %duration x 0.1 秒間進む"
+    //% speed.min=0 speed.max=100
+    export function moveForwardFor(duration: number): void {
+        motorOn(Motors.Both, Dir.Forward, 50)
+        basic.pause(duration * 100)
+        stop()
+    }
+
+    //% blockId=move_forward
+    //% weight=100 blockGap=8
+    //% block="move forward at speed %speed"
+    //% speed.min=0 speed.max=100
+    export function moveForward(speed: number): void {
+        motorOn(Motors.Both, Dir.Forward, speed)
+    }
+
+    //% blockId=move_backward
+    //% weight=100 blockGap=8
+    //% block="move backward at speed %speed"
+    //% speed.min=0 speed.max=100
+    export function moveBackward(speed: number): void {
+        motorOn(Motors.Both, Dir.Backward, speed)
+    }
+
+    //% blockId=turn_left
+    //% weight=100 blockGap=8
+    //% block="turn left at speed %speed"
+    //% speed.min=0 speed.max=100
+    export function turnLeft(speed: number): void {
+        motorOn(Motors.Left, Dir.Backward, speed)
+        motorOn(Motors.Right, Dir.Forward, speed)
+    }
+
+    //% blockId=turn_right
+    //% weight=100 blockGap=8
+    //% block="turn right at speed %speed"
+    //% speed.min=0 speed.max=100
+    export function turnRight(speed: number): void {
+        motorOn(Motors.Left, Dir.Forward, speed)
+        motorOn(Motors.Right, Dir.Backward, speed)
+    }
+
+    /**
+     * Sets the requested motor running in chosen direction at a set speed.
+     * If setup is not complete, calls the initialisation routine.
+     * @param motor which motor to turn on
+     * @param dir which direction to go
+     * @param speed how fast to spin the motor
+     */
     //% blockId=motor_on
     //% block="turn %motors|motor on direction %direction|at speed %speed"
     //% weight=75 blockGap=8
@@ -149,14 +169,11 @@ namespace ruirui {
      * Turns off the specified motor.
      * @param motor which motor to turn off
      */
-    //% subcategory=Motors
-    //% group="Motor Control"
     //% blockId=motor_off
     //% weight=70 blockGap=8
     //% block="turn off %motor| motor"
-    export function motorOff(motor: Motors): void {
-        let motorOnbuf = pins.createBuffer(6)
-        switch (motor) {
+    function motorOff(motors: Motors): void {
+        switch (motors) {
             case Motors.Left:
                 pins.digitalWritePin(DigitalPin.P14, 0)
                 break
