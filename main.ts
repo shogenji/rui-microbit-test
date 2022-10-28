@@ -44,7 +44,7 @@ namespace ruirui {
 
     //% blockId="stop_motor"
     //% block="motor | %motors stop"
-    export function stopMotor(motors: Motors): void {
+    function stopMotor(motors: Motors): void {
         motorOff(motors)
     }
 
@@ -54,6 +54,7 @@ namespace ruirui {
     export function stop(): void {
         motorOff(Motors.Both)
     }
+
 
     //% blockId=move_motor
     //% weight=100 blockGap=8
@@ -75,10 +76,18 @@ namespace ruirui {
         }
     }
 
+    //% blockId=stop_for_x100ms
+    //% block="stop | for %duration x 0.1 seconds"
+    //% block.loc.ja="止まる | %duration x 0.1 秒間"
+    export function stopFor(duration: number): void {
+        motorOff(Motors.Both)
+        basic.pause(duration * 100)
+    }
+
     //% blockId=move_forward_x100ms
     //% weight=100 blockGap=8
-    //% block="move forward for %duration x 0.1 seconds"
-    //% block.loc.ja="進む %duration x 0.1 秒間"
+    //% block="move forward | for %duration x 0.1 seconds"
+    //% block.loc.ja="すすむ | %duration x 0.1 秒間"
     export function moveForwardFor(duration: number): void {
         motorOn(Motors.Both, Dir.Forward, 50)
         basic.pause(duration * 100)
