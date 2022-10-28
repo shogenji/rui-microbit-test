@@ -4,6 +4,7 @@
 namespace ruirui {
 
     let speedMax = 1023
+    let speedRatio = 50
 
     export enum Motors {
         //% blockId=left_motor
@@ -103,7 +104,7 @@ namespace ruirui {
     //% block.loc.ja="さがる | %duration x 0.1 秒間"
     //% duration.min=0 duration.max=1000
     export function moveBackwardFor(duration: number): void {
-        motorOn(Motors.Both, Dir.Backward, 50)
+        motorOn(Motors.Both, Dir.Backward, speedRatio)
         basic.pause(duration * 100)
         stop()
     }
@@ -114,10 +115,8 @@ namespace ruirui {
     //% block.loc.ja="左回転 | %duration x 0.1 秒間"
     //% duration.min=0 duration.max=1000
     export function rotateCcwFor(duration: number): void {
-        let speed = 50
-
-        motorOn(Motors.Left, Dir.Backward, speed)
-        motorOn(Motors.Right, Dir.Forward, speed)
+        motorOn(Motors.Left, Dir.Backward, speedRatio)
+        motorOn(Motors.Right, Dir.Forward, speedRatio)
         basic.pause(duration * 100)
         stop()
     }
@@ -128,17 +127,47 @@ namespace ruirui {
     //% block.loc.ja="右回転 | %duration x 0.1 秒間"
     //% duration.min=0 duration.max=1000
     export function turnCwFor(duration: number): void {
-        let speed = 50
-
-        motorOn(Motors.Left, Dir.Forward, speed)
-        motorOn(Motors.Right, Dir.Backward, speed)
+        motorOn(Motors.Left, Dir.Forward, speedRatio)
+        motorOn(Motors.Right, Dir.Backward, speedRatio)
         basic.pause(duration * 100)
         stop()
     }
 
+    //% blockId=set_speed_ratio
+    //% weight=50 blockGap=8
+    //% block="set speed ratio to %ratio %"
+    //% block.loc.ja="スピードを| %ratio %|に設定する"
+    //% ratio.min=0 ratio.max=100
+    export function setSpeedRatio(ratio: number): void {
+        if (ratio < 0) {
+            ratio = 0
+        } else if (ratio > 100) {
+            ratio = 100
+        }
+        speedRatio = (speedMax * ratio) / 100
+    }
+
+    //% blockId=set_max_speed
+    //% weight=40 blockGap=8
+    //% block="set max %speed"
+    //% block.loc.ja="最高スピードを| %speed |に設定する"
+    //% speed.min=0 speed.max=1023
+    export function setMaxSpeed(speed: number): void {
+        if (speed < 0) {
+            speedMax = 0
+        } else if (speed > 1023) {
+            speedMax = 1023
+        } else {
+            speedMax = speed
+        }
+    }
+
+
+
+
     //% blockId=move_forward
     //% weight=10 blockGap=8
-    //% block="move forward at speed %speed"
+    //% block="move forward at speed %speed %"
     //% speed.min=0 speed.max=100
     function moveForward(speed: number): void {
         motorOn(Motors.Both, Dir.Forward, speed)
@@ -146,7 +175,7 @@ namespace ruirui {
 
     //% blockId=move_backward
     //% weight=10 blockGap=8
-    //% block="move backward at speed %speed"
+    //% block="move backward at speed %speed %"
     //% speed.min=0 speed.max=100
     function moveBackward(speed: number): void {
         motorOn(Motors.Both, Dir.Backward, speed)
@@ -154,7 +183,7 @@ namespace ruirui {
 
     //% blockId=rotate_ccw_at
     //% weight=10 blockGap=8
-    //% block="rotate counter-clockwise at speed %speed"
+    //% block="rotate counter-clockwise at speed %speed %"
     //% speed.min=0 speed.max=100
     export function rotateCcwAt(speed: number): void {
         motorOn(Motors.Left, Dir.Backward, speed)
@@ -163,7 +192,7 @@ namespace ruirui {
 
     //% blockId=rotate_cw_at
     //% weight=10 blockGap=8
-    //% block="rotate counter-clockwise at speed %speed"
+    //% block="rotate counter-clockwise at speed %speed %"
     //% speed.min=0 speed.max=100
     export function rotateCwAt(speed: number): void {
         motorOn(Motors.Left, Dir.Forward, speed)
@@ -178,7 +207,7 @@ namespace ruirui {
      * @param speed how fast to spin the motor
      */
     //% blockId=motor_on
-    //% block="turn %motors|motor on direction %direction|at speed %speed"
+    //% block="turn %motors|motor on direction %direction|at speed %speed %"
     //% speed.min=0 speed.max=100
     function motorOn(motors: Motors, direction: Dir, speed: number): void {
         /*convert 0-100 to 0-1023 by a simple multiple by (speedMax / 100) */
