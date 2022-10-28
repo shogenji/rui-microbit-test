@@ -1,4 +1,4 @@
-//% weight=50 color=#ff8800 icon="\uf1b9"
+//% weight=100 color=#ff8800 icon="\uf1b9"
 //% block="Car"
 //% block.loc.ja="走らせようキット"
 namespace ruirui {
@@ -61,7 +61,7 @@ namespace ruirui {
 
 
     //% blockId=move_motor
-    //% weight=100 blockGap=8
+    //% weight=10 blockGap=8
     //% block="move %direction|at speed %speed"
     //% speed.min=0 speed.max=100
     export function move(direction: Dir, speed: number): void {
@@ -69,6 +69,7 @@ namespace ruirui {
     }
 
     //% blockId=stop_for_x100ms
+    //% weight=10 blockGap=8
     //% block="stop | for %duration x 0.1 seconds"
     //% block.loc.ja="止まる | %duration x 0.1 秒間"
     export function stopFor(duration: number): void {
@@ -77,7 +78,7 @@ namespace ruirui {
     }
 
     //% blockId=move_forward_x100ms
-    //% weight=100 blockGap=8
+    //% weight=60 blockGap=8
     //% block="move forward | for %duration x 0.1 seconds"
     //% block.loc.ja="すすむ | %duration x 0.1 秒間"
     export function moveForwardFor(duration: number): void {
@@ -87,7 +88,7 @@ namespace ruirui {
     }
 
     //% blockId=move_backward_x100ms
-    //% weight=100 blockGap=8
+    //% weight=90 blockGap=8
     //% block="move backward | for %duration x 0.1 seconds"
     //% block.loc.ja="さがる | %duration x 0.1 秒間"
     export function moveBackwardFor(duration: number): void {
@@ -97,7 +98,7 @@ namespace ruirui {
     }
 
     //% blockId=rotate_ccw_x100ms
-    //% weight=100 blockGap=8
+    //% weight=70 blockGap=8
     //% block="rotate counter-clockwise | for %duration x 0.1 seconds"
     //% block.loc.ja="左回転 | %duration x 0.1 秒間"
     export function rotateCcwFor(duration: number): void {
@@ -110,7 +111,7 @@ namespace ruirui {
     }
 
     //% blockId=rotate_cw_x100ms
-    //% weight=100 blockGap=8
+    //% weight=80 blockGap=8
     //% block="rotate clockwise | for %duration x 0.1 seconds"
     //% block.loc.ja="右回転 | %duration x 0.1 秒間"
     export function turnCwFor(duration: number): void {
@@ -123,23 +124,23 @@ namespace ruirui {
     }
 
     //% blockId=move_forward
-    //% weight=100 blockGap=8
+    //% weight=10 blockGap=8
     //% block="move forward at speed %speed"
     //% speed.min=0 speed.max=100
-    export function moveForward(speed: number): void {
+    function moveForward(speed: number): void {
         motorOn(Motors.Both, Dir.Forward, speed)
     }
 
     //% blockId=move_backward
-    //% weight=100 blockGap=8
+    //% weight=10 blockGap=8
     //% block="move backward at speed %speed"
     //% speed.min=0 speed.max=100
-    export function moveBackward(speed: number): void {
+    function moveBackward(speed: number): void {
         motorOn(Motors.Both, Dir.Backward, speed)
     }
 
     //% blockId=rotate_ccw_at
-    //% weight=100 blockGap=8
+    //% weight=10 blockGap=8
     //% block="rotate counter-clockwise at speed %speed"
     //% speed.min=0 speed.max=100
     export function rotateCcwAt(speed: number): void {
@@ -148,7 +149,7 @@ namespace ruirui {
     }
 
     //% blockId=rotate_cw_at
-    //% weight=100 blockGap=8
+    //% weight=10 blockGap=8
     //% block="rotate counter-clockwise at speed %speed"
     //% speed.min=0 speed.max=100
     export function rotateCwAt(speed: number): void {
@@ -165,7 +166,6 @@ namespace ruirui {
      */
     //% blockId=motor_on
     //% block="turn %motors|motor on direction %direction|at speed %speed"
-    //% weight=75 blockGap=8
     //% speed.min=0 speed.max=100
     function motorOn(motors: Motors, direction: Dir, speed: number): void {
         /*convert 0-100 to 0-1023 by a simple multiple by (speedMax / 100) */
