@@ -87,7 +87,7 @@ namespace ruirui {
     //% blockId=stop_for_x100ms
     //% weight=60 blockGap=8
     //% block="stop | for %duration x 0.1 seconds"
-    //% block.loc.ja="止まる | %duration x 0.1 秒間"
+    //% block.loc.ja="止まる | %時間 x 0.1 秒間"
     //% duration.min=0 duration.max=1000
     export function stopFor(duration: number): void {
         motorOff(Motors.Both)
