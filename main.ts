@@ -6,13 +6,11 @@ namespace ruirui {
     //% blockId=speed_max
     //% block="Max Speed"
     //% block.loc.ja="最高スピード"
-    //% advanced=true
     export let speedMax = 1023
 
     //% blockId=speed_ratio
     //% block="Speed"
     //% block.loc.ja="スピード"
-    //% advanced=true
     export let speedRatio = 50
 
     export enum Motors {
