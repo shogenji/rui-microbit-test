@@ -1,4 +1,4 @@
-//% weight=100 color=#ff8800 icon="\uf70c"
+//% weight=100 color=#ff8800
 //% block="Car"
 //% block.loc.ja="走らせようキット"
 namespace ruirui {
