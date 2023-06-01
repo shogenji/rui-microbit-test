@@ -1,8 +1,8 @@
 //% weight=100 color=#ff8800 icon="\uf1b9"
 //% block="RunKit"
 //% block.loc.ja="走らせようキット"
-//% groups="['Basic', 'Test', 'Fruits', 'Veggies']"
-//% groups.loc.ja="['あ', 'テスト', 'う']"
+//% groups="['Basic', 'Test', 'Settings']"
+//% groups.loc.ja="['あ', 'テスト', '設定']"
 namespace ruirui {
 
     //% blockId=speed_max
@@ -81,7 +81,6 @@ namespace ruirui {
         motorOff(Motors.Both)
     }
 
-
     //% blockId=move_motor
     //% weight=10 blockGap=8
     //% block="move $direction|at speed $speed"
@@ -151,6 +150,21 @@ namespace ruirui {
         stop()
     }
 
+    //% blockId=set_speed_ratio
+    //% weight=40 blockGap=8
+    //% block="set speed ratio to $speed"
+    //% block.loc.ja="スピードを| $speed |に設定する"
+    //% speed.min=0 speed.max=100
+    //% group="Basic"
+    export function setSpeedRatio(speed: number): void {
+        if (speed < 0) {
+            speed = 0
+        } else if (speed > 100) {
+            speed = 100
+        }
+        speedRatio = (speedMax * speed) / 100
+    }
+
 
 
     //% blockId=move_forward_msec
@@ -167,10 +181,11 @@ namespace ruirui {
     }
 
     //% blockId=rotate_ccw_msec
-    //% weight=70 blockGap=8
+    //% weight=90 blockGap=8
     //% block="rotate counter-clockwise | for $duration"
     //% block.loc.ja="左回転（ミリ秒） | $duration"
     //% duration.min=0 duration.max=100000
+    //% duration.shadow="timePicker"
     //% group="Test"
     export function rotateCcwForMsec(duration: number): void {
         motorOn(Motors.Left, Dir.Backward, speedRatio)
@@ -184,6 +199,7 @@ namespace ruirui {
     //% block="rotate clockwise | for $duration"
     //% block.loc.ja="右回転（ミリ秒） | $duration"
     //% duration.min=0 duration.max=100000
+    //% duration.shadow="timePicker"
     //% group="Test"
     export function turnCwForMsec(duration: number): void {
         motorOn(Motors.Left, Dir.Forward, speedRatio)
@@ -193,7 +209,7 @@ namespace ruirui {
     }
 
     //% blockId=move_backward_msec
-    //% weight=90 blockGap=8
+    //% weight=70 blockGap=8
     //% block="move backward | for $duration"
     //% block.loc.ja="さがる（ミリ秒） | $duration"
     //% duration.min=0 duration.max=100000
@@ -206,7 +222,7 @@ namespace ruirui {
     }
 
     //% blockId=stop_for_msec
-    //% weight=80 blockGap=8
+    //% weight=60 blockGap=8
     //% block="stop || for $duration"
     //% block.loc.ja="止まる ||（ミリ秒）| $duration"
     //% duration.min=0 duration.max=100000
@@ -216,21 +232,6 @@ namespace ruirui {
     export function stopForMsec(duration?: number): void {
         motorOff(Motors.Both)
         basic.pause(duration)
-    }
-
-    //% blockId=set_speed_ratio
-    //% weight=50 blockGap=8
-    //% block="set speed ratio to $speed"
-    //% block.loc.ja="スピードを| $speed |に設定する"
-    //% speed.min=0 speed.max=100
-    //% group="Basic"
-    export function setSpeedRatio(speed: number): void {
-        if (speed < 0) {
-            speed = 0
-        } else if (speed > 100) {
-            speed = 100
-        }
-        speedRatio = (speedMax * speed) / 100
     }
 
     //% blockId=set_speed_ratio_shadow
@@ -254,6 +255,7 @@ namespace ruirui {
     //% block="set max $speed"
     //% block.loc.ja="最高スピードを| $speed |に設定する"
     //% speed.min=0 speed.max=1023
+    //% group="Settings"
     export function setMaxSpeed(speed: number): void {
         if (speed < 0) {
             speedMax = 0
