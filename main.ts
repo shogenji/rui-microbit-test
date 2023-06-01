@@ -40,7 +40,7 @@ namespace ruirui {
     }
 
     //% blockId=run_motor
-    //% block="run %motors motor %direction at speed %speed"
+    //% block="run $motors motor $direction at speed $speed"
     //% speed.min=0 speed.max=1023
     export function runMotor(motors: Motors, direction: Dir, speed: number): void {
         // Left motor
@@ -63,7 +63,7 @@ namespace ruirui {
     }
 
     //% blockId="stop_motor"
-    //% block="motor | %motors stop"
+    //% block="motor | $motors stop"
     function stopMotor(motors: Motors): void {
         motorOff(motors)
     }
@@ -78,7 +78,7 @@ namespace ruirui {
 
     //% blockId=move_motor
     //% weight=10 blockGap=8
-    //% block="move %direction|at speed %speed"
+    //% block="move $direction|at speed $speed"
     //% speed.min=0 speed.max=100
     export function move(direction: Dir, speed: number): void {
         motorOn(Motors.Both, Dir.Forward, speed)
@@ -86,8 +86,8 @@ namespace ruirui {
 
     //% blockId=stop_for_x100ms
     //% weight=60 blockGap=8
-    //% block="stop | for %duration x 0.1 seconds"
-    //% block.loc.ja="止まる | %時間 x 0.1 秒間"
+    //% block="stop | for $duration x 0.1 seconds"
+    //% block.loc.ja="止まる | $時間 x 0.1 秒間"
     //% duration.min=0 duration.max=1000
     export function stopFor(duration: number): void {
         motorOff(Motors.Both)
@@ -96,8 +96,8 @@ namespace ruirui {
 
     //% blockId=move_forward_x100ms
     //% weight=100 blockGap=8
-    //% block="move forward | for %duration x 0.1 seconds"
-    //% block.loc.ja="すすむ | %duration x 0.1 秒間"
+    //% block="move forward | for $duration x 0.1 seconds"
+    //% block.loc.ja="すすむ | $duration x 0.1 秒間"
     //% duration.min=0 duration.max=1000
     export function moveForwardFor(duration: number): void {
         motorOn(Motors.Both, Dir.Forward, 50)
@@ -107,8 +107,8 @@ namespace ruirui {
 
     //% blockId=move_backward_x100ms
     //% weight=90 blockGap=8
-    //% block="move backward | for %duration x 0.1 seconds"
-    //% block.loc.ja="さがる | %duration x 0.1 秒間"
+    //% block="move backward | for $duration x 0.1 seconds"
+    //% block.loc.ja="さがる | $duration x 0.1 秒間"
     //% duration.min=0 duration.max=1000
     export function moveBackwardFor(duration: number): void {
         motorOn(Motors.Both, Dir.Backward, speedRatio)
@@ -118,8 +118,8 @@ namespace ruirui {
 
     //% blockId=rotate_ccw_x100ms
     //% weight=70 blockGap=8
-    //% block="rotate counter-clockwise | for %duration x 0.1 seconds"
-    //% block.loc.ja="左回転 | %duration x 0.1 秒間"
+    //% block="rotate counter-clockwise | for $duration x 0.1 seconds"
+    //% block.loc.ja="左回転 | $duration x 0.1 秒間"
     //% duration.min=0 duration.max=1000
     export function rotateCcwFor(duration: number): void {
         motorOn(Motors.Left, Dir.Backward, speedRatio)
@@ -130,8 +130,8 @@ namespace ruirui {
 
     //% blockId=rotate_cw_x100ms
     //% weight=80 blockGap=8
-    //% block="rotate clockwise | for %duration x 0.1 seconds"
-    //% block.loc.ja="右回転 | %duration x 0.1 秒間"
+    //% block="rotate clockwise | for $duration x 0.1 seconds"
+    //% block.loc.ja="右回転 | $duration x 0.1 秒間"
     //% duration.min=0 duration.max=1000
     export function turnCwFor(duration: number): void {
         motorOn(Motors.Left, Dir.Forward, speedRatio)
