@@ -116,6 +116,17 @@ namespace ruirui {
         stop()
     }
 
+    //% blockId=move_backward_ms
+    //% weight=90 blockGap=8
+    //% block="move backward | for $ms"
+    //% block.loc.ja="さがる（ミリ秒） | $ms"
+    //% ms.shadow="timePicker"
+    export function moveBackwardForMs(ms: number): void {
+        motorOn(Motors.Both, Dir.Backward, speedRatio)
+        basic.pause(ms)
+        stop()
+    }
+
     //% blockId=rotate_ccw_x100ms
     //% weight=70 blockGap=8
     //% block="rotate counter-clockwise | for $duration x 0.1 seconds"
