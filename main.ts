@@ -157,7 +157,7 @@ namespace ruirui {
     //% block="stop || for $duration"
     //% block.loc.ja="止まる ||（ミリ秒）| $duration"
     //% duration.min=0 duration.max=100000
-    //% duration.defl=0
+    //% duration.defl=4000
     //% duration.shadow="timePicker"
     //% group="Test"
     export function stopForMsec(duration?: number): void {
