@@ -1,4 +1,4 @@
-//% weight=100 color=#ff8800 icon="\uf5e4"
+//% weight=100 color=#ff8800 icon="\uf1b9"
 //% block="RunKit"
 //% block.loc.ja="走らせようキット"
 //% groups="['Basic', 'Test', 'Fruits', 'Veggies']"
@@ -107,7 +107,7 @@ namespace ruirui {
     //% duration.min=0 duration.max=1000
     //% group="Basic"
     export function moveForwardFor(duration: number): void {
-        motorOn(Motors.Both, Dir.Forward, 50)
+        motorOn(Motors.Both, Dir.Forward, speedRatio)
         basic.pause(duration * 100)
         stop()
     }
@@ -124,7 +124,7 @@ namespace ruirui {
         stop()
     }
 
-    //% blockId=move_forward_x100ms
+    //% blockId=move_forward_msec
     //% weight=100 blockGap=8
     //% block="move forward | for $duration x 0.1 seconds"
     //% block.loc.ja="すすむ（ミリ秒） | $duration"
@@ -132,7 +132,7 @@ namespace ruirui {
     //% duration.shadow="timePicker"
     //% group="Test"
     export function moveForwardForMsec(duration: number): void {
-        motorOn(Motors.Both, Dir.Forward, 50)
+        motorOn(Motors.Both, Dir.Forward, speedRatio)
         basic.pause(duration)
         stop()
     }
