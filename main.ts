@@ -92,10 +92,10 @@ namespace ruirui {
     //% blockId=stop_for_x100ms
     //% weight=60 blockGap=8
     //% block="stop | for $duration x 0.1 seconds"
-    //% block.loc.ja="止まる | $時間 x 0.1 秒間"
+    //% block.loc.ja="止まる | $duration x 0.1 秒間"
     //% duration.min=0 duration.max=1000
     //% group="Basic"
-    export function stopFor(duration: number): void {
+    function stopFor(duration: number): void {
         motorOff(Motors.Both)
         basic.pause(duration * 100)
     }
@@ -124,9 +124,11 @@ namespace ruirui {
         stop()
     }
 
+
+
     //% blockId=move_forward_msec
     //% weight=100 blockGap=8
-    //% block="move forward | for $duration x 0.1 seconds"
+    //% block="move forward | for $duration"
     //% block.loc.ja="すすむ（ミリ秒） | $duration"
     //% duration.min=0 duration.max=100000
     //% duration.shadow="timePicker"
@@ -148,6 +150,18 @@ namespace ruirui {
         motorOn(Motors.Both, Dir.Backward, speedRatio)
         basic.pause(duration)
         stop()
+    }
+
+    //% blockId=stop_for_msec
+    //% weight=80 blockGap=8
+    //% block="stop || for $duration"
+    //% block.loc.ja="止まる ||（ミリ秒）| $duration"
+    //% duration.min=0 duration.max=100000
+    //% duration.shadow="timePicker"
+    //% group="Test"
+    export function stopForMsec(duration: number): void {
+        motorOff(Motors.Both)
+        basic.pause(duration)
     }
 
     //% blockId=rotate_ccw_x100ms
