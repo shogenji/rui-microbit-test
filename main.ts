@@ -1,4 +1,4 @@
-//% weight=100 color=#ff8800 icon="\uf70c"
+//% weight=100 color=#ff8800 icon="\uf5e4"
 //% block="RunKit"
 //% block.loc.ja="走らせようキット"
 //% groups="['Basic', 'Test', 'Fruits', 'Veggies']"
@@ -194,10 +194,10 @@ namespace ruirui {
     //% blockId=set_speed_ratio_shadow
     //% weight=50 blockGap=8
     //% block="set speed ratio to $speed"
-    //% block.loc.ja="スピードを| $speed |に設定する"
+    //% block.loc.ja="スピードを| $speed |％に設定する"
     //% speed.min=0 speed.max=100
     //% speed.shadow="speedPicker"
-    //% group="Basic"
+    //% group="Test"
     export function setSpeedRatioShadow(speed: number): void {
         if (speed < 0) {
             speed = 0
