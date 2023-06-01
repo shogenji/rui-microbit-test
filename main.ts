@@ -1,4 +1,4 @@
-//% weight=100 color=#ff8800 icon="\uf70c"
+//% weight=100 color=#ff8800 icon="\uf1b9"
 //% block="RunKit"
 //% block.loc.ja="走らせようキット"
 namespace ruirui {
@@ -74,7 +74,6 @@ namespace ruirui {
     export function stop(): void {
         motorOff(Motors.Both)
     }
-
 
     //% blockId=move_motor
     //% weight=10 blockGap=8
