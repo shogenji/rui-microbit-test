@@ -107,10 +107,21 @@ namespace ruirui {
 
     //% blockId=move_backward_x100ms
     //% weight=90 blockGap=8
-    //% block="move backward | for $ms"
-    //% block.loc.ja="さがる | $ms"
+    //% block="move backward | for %duration x 0.1 seconds"
+    //% block.loc.ja="さがる | %duration x 0.1 秒間"
+    //% duration.min=0 duration.max=1000
+    export function moveBackwardFor(duration: number): void {
+        motorOn(Motors.Both, Dir.Backward, speedRatio)
+        basic.pause(duration * 100)
+        stop()
+    }
+
+    //% blockId=move_backward_ms
+    //% weight=90 blockGap=8
+    //% block="move backward | for $ms milliseconds"
+    //% block.loc.ja="$ms ミリ秒 | さがる"
     //% ms.shadow="timePicker"
-    export function moveBackwardFor(ms: number): void {
+    export function moveBackwardFor2(ms: number): void {
         motorOn(Motors.Both, Dir.Backward, speedRatio)
         basic.pause(ms)
         stop()
