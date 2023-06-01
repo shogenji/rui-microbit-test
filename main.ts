@@ -2,6 +2,7 @@
 //% block="RunKit"
 //% block.loc.ja="走らせようキット"
 //% groups="['Basic', 'Test', 'Fruits', 'Veggies']"
+//% groups.loc.ja="['あ', 'い', 'う']"
 namespace ruirui {
 
     //% blockId=speed_max
@@ -46,7 +47,7 @@ namespace ruirui {
     //% block="run $motors motor $direction at speed $speed"
     //% speed.min=0 speed.max=1023
     //% group="Basic"
-    export function runMotor(motors: Motors, direction: Dir, speed: number): void {
+    function runMotor(motors: Motors, direction: Dir, speed: number): void {
         // Left motor
         if (motors == 0) {
             pins.digitalWritePin(DigitalPin.P13, direction)
@@ -76,7 +77,7 @@ namespace ruirui {
     //% block="stop"
     //% block.loc.ja="止まる"
     //% group="Basic"
-    export function stop(): void {
+    function stop(): void {
         motorOff(Motors.Both)
     }
 
@@ -108,6 +109,32 @@ namespace ruirui {
     //% group="Basic"
     export function moveForwardFor(duration: number): void {
         motorOn(Motors.Both, Dir.Forward, speedRatio)
+        basic.pause(duration * 100)
+        stop()
+    }
+
+    //% blockId=rotate_ccw_x100ms
+    //% weight=70 blockGap=8
+    //% block="rotate counter-clockwise | for $duration x 0.1 seconds"
+    //% block.loc.ja="左回転 | $duration x 0.1 秒間"
+    //% duration.min=0 duration.max=1000
+    //% group="Basic"
+    export function rotateCcwFor(duration: number): void {
+        motorOn(Motors.Left, Dir.Backward, speedRatio)
+        motorOn(Motors.Right, Dir.Forward, speedRatio)
+        basic.pause(duration * 100)
+        stop()
+    }
+
+    //% blockId=rotate_cw_x100ms
+    //% weight=80 blockGap=8
+    //% block="rotate clockwise | for $duration x 0.1 seconds"
+    //% block.loc.ja="右回転 | $duration x 0.1 秒間"
+    //% duration.min=0 duration.max=1000
+    //% group="Basic"
+    export function turnCwFor(duration: number): void {
+        motorOn(Motors.Left, Dir.Forward, speedRatio)
+        motorOn(Motors.Right, Dir.Backward, speedRatio)
         basic.pause(duration * 100)
         stop()
     }
@@ -157,38 +184,12 @@ namespace ruirui {
     //% block="stop || for $duration"
     //% block.loc.ja="止まる ||（ミリ秒）| $duration"
     //% duration.min=0 duration.max=100000
-    //% duration.defl=4000
+    //% duration.defl=0
     //% duration.shadow="timePicker"
     //% group="Test"
     export function stopForMsec(duration?: number): void {
         motorOff(Motors.Both)
         basic.pause(duration)
-    }
-
-    //% blockId=rotate_ccw_x100ms
-    //% weight=70 blockGap=8
-    //% block="rotate counter-clockwise | for $duration x 0.1 seconds"
-    //% block.loc.ja="左回転 | $duration x 0.1 秒間"
-    //% duration.min=0 duration.max=1000
-    //% group="Basic"
-    export function rotateCcwFor(duration: number): void {
-        motorOn(Motors.Left, Dir.Backward, speedRatio)
-        motorOn(Motors.Right, Dir.Forward, speedRatio)
-        basic.pause(duration * 100)
-        stop()
-    }
-
-    //% blockId=rotate_cw_x100ms
-    //% weight=80 blockGap=8
-    //% block="rotate clockwise | for $duration x 0.1 seconds"
-    //% block.loc.ja="右回転 | $duration x 0.1 秒間"
-    //% duration.min=0 duration.max=1000
-    //% group="Basic"
-    export function turnCwFor(duration: number): void {
-        motorOn(Motors.Left, Dir.Forward, speedRatio)
-        motorOn(Motors.Right, Dir.Backward, speedRatio)
-        basic.pause(duration * 100)
-        stop()
     }
 
     //% blockId=set_speed_ratio
