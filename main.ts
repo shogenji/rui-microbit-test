@@ -9,14 +9,13 @@ namespace ruirui {
     //% block="Max Speed"
     //% block.loc.ja="最高スピード"
     //% group="Basic"
-    //% group.loc.ja="あ"
-    export let speedMax = 1023
+    let speedMax = 512
 
     //% blockId=speed_ratio
     //% block="Speed"
     //% block.loc.ja="スピード"
     //% group="Basic"
-    export let speedRatio = 50
+    let speedRatio = 50
 
     export enum Motors {
         //% blockId=left_motor
@@ -161,9 +160,34 @@ namespace ruirui {
     //% duration.min=0 duration.max=100000
     //% duration.shadow="timePicker"
     //% group="Test"
-    //% group.loc.ja="テスト"
     export function moveForwardForMsec(duration: number): void {
         motorOn(Motors.Both, Dir.Forward, speedRatio)
+        basic.pause(duration)
+        stop()
+    }
+
+    //% blockId=rotate_ccw_msec
+    //% weight=70 blockGap=8
+    //% block="rotate counter-clockwise | for $duration"
+    //% block.loc.ja="左回転（ミリ秒） | $duration"
+    //% duration.min=0 duration.max=100000
+    //% group="Test"
+    export function rotateCcwForMsec(duration: number): void {
+        motorOn(Motors.Left, Dir.Backward, speedRatio)
+        motorOn(Motors.Right, Dir.Forward, speedRatio)
+        basic.pause(duration)
+        stop()
+    }
+
+    //% blockId=rotate_cw_msec
+    //% weight=80 blockGap=8
+    //% block="rotate clockwise | for $duration"
+    //% block.loc.ja="右回転（ミリ秒） | $duration"
+    //% duration.min=0 duration.max=100000
+    //% group="Test"
+    export function turnCwForMsec(duration: number): void {
+        motorOn(Motors.Left, Dir.Forward, speedRatio)
+        motorOn(Motors.Right, Dir.Backward, speedRatio)
         basic.pause(duration)
         stop()
     }
