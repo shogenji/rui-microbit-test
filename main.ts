@@ -160,7 +160,7 @@ namespace ruirui {
     //% duration.defl=0
     //% duration.shadow="timePicker"
     //% group="Test"
-    export function stopForMsec(duration: number): void {
+    export function stopForMsec(duration?: number): void {
         motorOff(Motors.Both)
         basic.pause(duration)
     }
