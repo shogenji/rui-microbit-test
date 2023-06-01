@@ -2,13 +2,14 @@
 //% block="RunKit"
 //% block.loc.ja="走らせようキット"
 //% groups="['Basic', 'Test', 'Fruits', 'Veggies']"
-//% groups.loc.ja="['あ', 'い', 'う']"
+//% groups.loc.ja="['あ', 'テスト', 'う']"
 namespace ruirui {
 
     //% blockId=speed_max
     //% block="Max Speed"
     //% block.loc.ja="最高スピード"
     //% group="Basic"
+    //% group.loc.ja="あ"
     export let speedMax = 1023
 
     //% blockId=speed_ratio
@@ -160,6 +161,7 @@ namespace ruirui {
     //% duration.min=0 duration.max=100000
     //% duration.shadow="timePicker"
     //% group="Test"
+    //% group.loc.ja="テスト"
     export function moveForwardForMsec(duration: number): void {
         motorOn(Motors.Both, Dir.Forward, speedRatio)
         basic.pause(duration)
