@@ -82,7 +82,7 @@ namespace ruirui {
     }
 
     //% blockId=move_motor
-    //% weight=10 blockGap=8
+    //% weight=10
     //% block="move $direction|at speed $speed"
     //% speed.min=0 speed.max=100
     function move(direction: Dir, speed: number): void {
@@ -90,7 +90,7 @@ namespace ruirui {
     }
 
     //% blockId=stop_for_x100ms
-    //% weight=60 blockGap=8
+    //% weight=60
     //% block="stop | for $duration x 0.1 seconds"
     //% block.loc.ja="止まる | $duration x 0.1 秒間"
     //% duration.min=0 duration.max=1000
@@ -101,7 +101,7 @@ namespace ruirui {
     }
 
     //% blockId=move_forward_x100ms
-    //% weight=100 blockGap=8
+    //% weight=100
     //% block="move forward | for $duration x 0.1 seconds"
     //% block.loc.ja="すすむ | $duration x 0.1 秒間"
     //% duration.min=0 duration.max=1000
@@ -113,7 +113,7 @@ namespace ruirui {
     }
 
     //% blockId=rotate_ccw_x100ms
-    //% weight=70 blockGap=8
+    //% weight=70
     //% block="rotate counter-clockwise | for $duration x 0.1 seconds"
     //% block.loc.ja="左回転 | $duration x 0.1 秒間"
     //% duration.min=0 duration.max=1000
@@ -126,7 +126,7 @@ namespace ruirui {
     }
 
     //% blockId=rotate_cw_x100ms
-    //% weight=80 blockGap=8
+    //% weight=80
     //% block="rotate clockwise | for $duration x 0.1 seconds"
     //% block.loc.ja="右回転 | $duration x 0.1 秒間"
     //% duration.min=0 duration.max=1000
@@ -139,7 +139,7 @@ namespace ruirui {
     }
 
     //% blockId=move_backward_x100ms
-    //% weight=90 blockGap=8
+    //% weight=90
     //% block="move backward | for $duration x 0.1 seconds"
     //% block.loc.ja="さがる | $duration x 0.1 秒間"
     //% duration.min=0 duration.max=1000
@@ -151,9 +151,9 @@ namespace ruirui {
     }
 
     //% blockId=set_speed_ratio
-    //% weight=40 blockGap=8
+    //% weight=40
     //% block="set speed ratio to $speed"
-    //% block.loc.ja="スピードを| $speed |に設定する"
+    //% block.loc.ja="スピードを $speed に設定する"
     //% speed.min=0 speed.max=100
     //% group="Basic"
     export function setSpeedRatio(speed: number): void {
@@ -168,9 +168,9 @@ namespace ruirui {
 
 
     //% blockId=move_forward_msec
-    //% weight=100 blockGap=8
-    //% block="move forward | for $duration"
-    //% block.loc.ja="すすむ（ミリ秒） | $duration"
+    //% weight=100
+    //% block="move forward for $duration"
+    //% block.loc.ja="すすむ（ミリ秒）$duration"
     //% duration.min=0 duration.max=100000
     //% duration.shadow="timePicker"
     //% group="Test"
@@ -181,8 +181,8 @@ namespace ruirui {
     }
 
     //% blockId=rotate_ccw_msec
-    //% weight=90 blockGap=8
-    //% block="rotate counter-clockwise | for $duration"
+    //% weight=90
+    //% block="rotate counter-clockwise for $duration"
     //% block.loc.ja="左回転（ミリ秒） | $duration"
     //% duration.min=0 duration.max=100000
     //% duration.shadow="timePicker"
@@ -195,7 +195,7 @@ namespace ruirui {
     }
 
     //% blockId=rotate_cw_msec
-    //% weight=80 blockGap=8
+    //% weight=80
     //% block="rotate clockwise | for $duration"
     //% block.loc.ja="右回転（ミリ秒） | $duration"
     //% duration.min=0 duration.max=100000
@@ -209,7 +209,7 @@ namespace ruirui {
     }
 
     //% blockId=move_backward_msec
-    //% weight=70 blockGap=8
+    //% weight=70
     //% block="move backward | for $duration"
     //% block.loc.ja="さがる（ミリ秒） | $duration"
     //% duration.min=0 duration.max=100000
@@ -222,7 +222,7 @@ namespace ruirui {
     }
 
     //% blockId=stop_for_msec
-    //% weight=60 blockGap=8
+    //% weight=60
     //% block="stop || for $duration"
     //% block.loc.ja="止まる ||（ミリ秒）| $duration"
     //% duration.min=0 duration.max=100000
@@ -235,7 +235,7 @@ namespace ruirui {
     }
 
     //% blockId=set_speed_ratio_shadow
-    //% weight=50 blockGap=8
+    //% weight=50
     //% block="set speed ratio to $speed"
     //% block.loc.ja="スピードを| $speed |％に設定する"
     //% speed.min=0 speed.max=100
@@ -251,10 +251,11 @@ namespace ruirui {
     }
 
     //% blockId=set_max_speed
-    //% weight=40 blockGap=8
+    //% weight=40
     //% block="set max $speed"
     //% block.loc.ja="最高スピードを| $speed |に設定する"
     //% speed.min=0 speed.max=1023
+    //% speed.defl=512
     //% group="Settings"
     export function setMaxSpeed(speed: number): void {
         if (speed < 0) {
@@ -270,7 +271,6 @@ namespace ruirui {
 
 
     //% blockId=move_forward
-    //% weight=10 blockGap=8
     //% block="move forward at speed $speed"
     //% speed.min=0 speed.max=100
     function moveForward(speed: number): void {
@@ -278,7 +278,6 @@ namespace ruirui {
     }
 
     //% blockId=move_backward
-    //% weight=10 blockGap=8
     //% block="move backward at speed $speed"
     //% speed.min=0 speed.max=100
     function moveBackward(speed: number): void {
@@ -286,7 +285,6 @@ namespace ruirui {
     }
 
     //% blockId=rotate_ccw_at
-    //% weight=10 blockGap=8
     //% block="rotate counter-clockwise at speed $speed"
     //% speed.min=0 speed.max=100
     function rotateCcwAt(speed: number): void {
@@ -295,7 +293,6 @@ namespace ruirui {
     }
 
     //% blockId=rotate_cw_at
-    //% weight=10 blockGap=8
     //% block="rotate counter-clockwise at speed $speed"
     //% speed.min=0 speed.max=100
     function rotateCwAt(speed: number): void {
@@ -348,7 +345,7 @@ namespace ruirui {
      * @param motor which motor to turn off
      */
     //% blockId=motor_off
-    //% weight=70 blockGap=8
+    //% weight=70
     //% block="turn off $motor| motor"
     function motorOff(motors: Motors): void {
         switch (motors) {
